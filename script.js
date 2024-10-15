@@ -31,10 +31,19 @@ function createStudent(event){
     students.push(student); //pushes our new student to array of students
     localStorage.setItem("students", JSON.stringify(students)); //adds student to local storage
 
+    //const studentList = document.getElementById("studentList");
+    //studentList.innerHTML = ""; // Clear the list before re-rendering
+    //students.forEach((student) => {
+    //    studentList.innerHTML += student.toHTML(); // Append each student's HTML to the list
+    //});
     const studentList = document.getElementById("studentList");
-    studentList.innerHTML = ""; // Clear the list before re-rendering
+    studentList.textContent = ""; // Clear the list before re-rendering
+
     students.forEach((student) => {
-        studentList.innerHTML += student.toHTML(); // Append each student's HTML to the list
+        const studentDiv = document.createElement("div");
+        studentDiv.textContent = `Name: ${student.firstName} ${student.lastName}, Area of Study: ${student.areaOfStudy}`;
+        studentList.appendChild(studentDiv);
     });
+
 }
 
